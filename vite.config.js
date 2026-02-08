@@ -2,8 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  // Dynamic base URL: '/' for dev, '/vannamwebsite/' for production
-  base: process.env.NODE_ENV === 'production' ? '/vannamwebsite/' : '/',
+  // Always use /vannamwebsite/ for production (GitHub Pages)
+  // For local dev, use / and access via http://localhost:5173/
+  base: '/vannamwebsite/',
 
   plugins: [react()],
 
