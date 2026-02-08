@@ -2,9 +2,10 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  // Always use /vannamwebsite/ for production (GitHub Pages)
-  // For local dev, use / and access via http://localhost:5173/
-  base: '/vannamwebsite/',
+  // Use environment-aware base URL
+  // Development: '/' for localhost
+  // Production: '/vannamwebsite/' for GitHub Pages
+  base: process.env.NODE_ENV === 'production' ? '/vannamwebsite/' : '/',
 
   plugins: [react()],
 
