@@ -64,7 +64,7 @@ function App() {
   return (
     <LanguageProvider>
       <ThemeProvider>
-        <Router>
+        <Router basename={import.meta.env.PROD ? '/vannamwebsite/' : '/'}>
           <div className={styles.appContainer}>
             <div className={styles.bgGradient}></div>
             <Navbar />
