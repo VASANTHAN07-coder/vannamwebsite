@@ -1,0 +1,217 @@
+.home {
+    width: 100%;
+}
+
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 4rem 0;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    background: var(--primary);
+    border-radius: 50%;
+    filter: blur(150px);
+    opacity: 0.1;
+    top: -100px;
+    right: -100px;
+    z-index: -1;
+}
+
+.heroContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 4rem;
+}
+
+.heroContent {
+    color: var(--text-main);
+}
+
+/* Updated Title Gradient Logic */
+.heroTitle {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    font-weight: 800;
+    /* Multicolor Gradient */
+    background: linear-gradient(to right, #60a5fa, #c084fc, #f472b6, #fb923c, #22d3ee);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 8s linear infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+}
+
+.heroBtns {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.btnSecondary {
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btnSecondary:hover {
+    background: rgba(37, 99, 235, 0.1);
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.2);
+}
+
+.heroVisual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.robotPlaceholder {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16/9;
+    /* Video aspect ratio */
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.heroVideo {
+    width: 100%;
+    height: 100%;
+    border: none;
+    object-fit: cover;
+    pointer-events: none;
+    /* simple way to prevent interaction, works on iframe sometimes or use overlay */
+}
+
+/* Overlay to prevent clicking video controls if needed, 
+   but pointer-events:none on iframe handles most, 
+   though it might block autoplay on some browsers if not muted. 
+   Here we rely on the iframe parameters. 
+*/
+
+.glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 50%, rgba(34, 211, 238, 0.1), transparent 80%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Features */
+.features {
+    padding: 6rem 0;
+    background: var(--bg-secondary);
+    transition: background 0.3s ease;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--text-main);
+}
+
+.featureGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.featureCard {
+    background: var(--glass);
+    /* Use glass variable which adapts */
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    border-radius: 1rem;
+    text-align: center;
+    transition: var(--transition);
+}
+
+.featureCard:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 30px -10px rgba(37, 99, 235, 0.3);
+}
+
+.featureIcon {
+    color: var(--accent);
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1.5rem;
+}
+
+.featureCard h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.featureCard p {
+    color: var(--text-muted);
+}
+
+@media (max-width: 968px) {
+    .heroContainer {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 3rem;
+    }
+
+    .heroContent h1 {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        margin: 0 auto 2rem;
+    }
+
+    .heroBtns {
+        justify-content: center;
+    }
+}
