@@ -2,7 +2,8 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/vannamwebsite/',   // 🔴 REQUIRED for GitHub Pages
+  // Dynamic base URL: '/' for dev, '/vannamwebsite/' for production
+  base: process.env.NODE_ENV === 'production' ? '/vannamwebsite/' : '/',
 
   plugins: [react()],
 
@@ -11,6 +12,9 @@ export default defineConfig({
       'Cache-Control': 'no-store, no-cache, must-revalidate, proxy-revalidate',
       'Pragma': 'no-cache',
       'Expires': '0'
+    },
+    fs: {
+      strict: false
     }
   },
 
